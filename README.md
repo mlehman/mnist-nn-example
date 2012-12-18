@@ -30,4 +30,4 @@ More complex  3 layer:
 ## Saving / Loading
 
     NeuralNetwork.save(network,"my-network.obj")
-    val network = NeuralNetwork.load("mynetwork.obj")
+    val network = NeuralNetwork.load("my-network.obj")
