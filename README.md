@@ -17,13 +17,13 @@ This will run the example in src/main/scala/example/FeedForwardExample.scala
 Simple 2 layer networj:
  
     val network = NeuralNetwork(
-      Layer(trainSet.numInputs, 50, HyperbolicTangent):+Layer(trainSet.numOfClasses, SoftMax),
+      Layer(trainSet.numInputs, 50, HyperbolicTangent):+Layer(trainSet.numOutputs, SoftMax),
       objective = CrossEntropyError)
 
 More complex  3 layer:
 
     val network = NeuralNetwork(
-      Layer(trainSet.numInputs, 300, Logistic):+Layer(200, Logistic):+Layer(trainSet.numOfClasses, SoftMax),
+      Layer(trainSet.numInputs, 300, Logistic):+Layer(200, Logistic):+Layer(trainSet.numOutputs, SoftMax),
       objective = CrossEntropyError,
       weightDecay = 0.001)
 

@@ -15,7 +15,7 @@ object FeedForwardExample {
     println("Training Examples: " + trainSet.numExamples)
 
     val network = NeuralNetwork(
-      Layer(trainSet.numInputs, 100, Logistic):+Layer(trainSet.numOfClasses, SoftMax),
+      Layer(trainSet.numInputs, 100, Logistic):+Layer(trainSet.numOutputs, SoftMax),
       objective = CrossEntropyError,
       weightDecay = 0.0001)
 

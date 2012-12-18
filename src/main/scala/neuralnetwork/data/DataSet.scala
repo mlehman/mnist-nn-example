@@ -32,8 +32,8 @@ abstract trait DataSet {
     
 }
 
-class ImageTileDataSet(val inputs: DoubleMatrix, val targets: DoubleMatrix, val numOfClasses: Int, val imageDimension: Int) extends DataSet {
-  def copy(inputs: DoubleMatrix, targets: DoubleMatrix) = new ImageTileDataSet(inputs, targets, numOfClasses, imageDimension)
+class ImageTileDataSet(val inputs: DoubleMatrix, val targets: DoubleMatrix, val numClasses: Int, val imageDimension: Int) extends DataSet {
+  def copy(inputs: DoubleMatrix, targets: DoubleMatrix) = new ImageTileDataSet(inputs, targets, numClasses, imageDimension)
 }
 
 object ImageTileDataSet {
