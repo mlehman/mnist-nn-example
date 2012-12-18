@@ -14,13 +14,13 @@ This will run the example in src/main/scala/example/FeedForwardExample.scala
     
 ## Configuration Examples
 
-Simple 2 layer networj:
+### 2 layer network:
  
     val network = NeuralNetwork(
       Layer(trainSet.numInputs, 50, HyperbolicTangent):+Layer(trainSet.numOutputs, SoftMax),
       objective = CrossEntropyError)
 
-More complex  3 layer:
+### 3 layer network:
 
     val network = NeuralNetwork(
       Layer(trainSet.numInputs, 300, Logistic):+Layer(200, Logistic):+Layer(trainSet.numOutputs, SoftMax),
