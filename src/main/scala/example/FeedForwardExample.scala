@@ -11,7 +11,7 @@ object FeedForwardExample {
 
   def main(args: Array[String]) {
 
-    val trainSet = ImageTileDataSet(trainingSetDir, numOfClasses = 10, imageDimension = 28)
+    val trainSet = ImageTileDataSet(trainingSetDir, numClasses = 10, imageDimension = 28)
     println("Training Examples: " + trainSet.numExamples)
 
     val network = NeuralNetwork(
@@ -31,7 +31,7 @@ object FeedForwardExample {
       
     trainer.train(network, trainSet)
 
-    val testSet = ImageTileDataSet(testSetDir, numOfClasses = 10, imageDimension = 28)
+    val testSet = ImageTileDataSet(testSetDir, numClasses = 10, imageDimension = 28)
 
     println("Test Examples: " + testSet.numExamples)
     println("Test Classification Accuracy: %f".format(network.eval(testSet)))

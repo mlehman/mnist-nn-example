@@ -42,7 +42,7 @@ object ImageTileDataSet {
     def isBlank(): Boolean = { pixels.sum == 0 }
   }
 
-  def apply(directory: String, numOfClasses: Int, imageDimension: Int): ImageTileDataSet = {
+  def apply(directory: String, numClasses: Int, imageDimension: Int): ImageTileDataSet = {
 
     def extractPixels(image: BufferedImage, x: Int, y: Int, d: Int): Array[Double] = {
       val pixels = for {
@@ -53,7 +53,7 @@ object ImageTileDataSet {
     }
     
     print("Loading tilesets '" + directory + "': ( ")
-    val trainingExamples = (0 until numOfClasses).flatMap {
+    val trainingExamples = (0 until numClasses).flatMap {
       i =>
         val tileSet = new File(directory, i + ".jpg")
         print( i + " ")
@@ -71,7 +71,7 @@ object ImageTileDataSet {
     val numOfExamples = trainingExamples.size
     val imagePixels = imageDimension * imageDimension
     val inputs = DoubleMatrix.zeros(numOfExamples, imagePixels)
-    val targets = DoubleMatrix.zeros(numOfExamples, numOfClasses)
+    val targets = DoubleMatrix.zeros(numOfExamples, numClasses)
 
     Random.shuffle(trainingExamples).zipWithIndex.foreach {
       case (example, row) =>
@@ -81,7 +81,7 @@ object ImageTileDataSet {
         targets.put(row, example.target, 1.0)
     }
 
-    new ImageTileDataSet(inputs.transpose, targets.transpose, numOfClasses, imageDimension)
+    new ImageTileDataSet(inputs.transpose, targets.transpose, numClasses, imageDimension)
   }
 
   def printImage(image: DoubleMatrix, dim: Int) {
