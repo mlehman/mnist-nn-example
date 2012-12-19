@@ -27,6 +27,19 @@ This will run the example in src/main/scala/example/FeedForwardExample.scala
       objective = CrossEntropyError,
       weightDecay = 0.001)
 
+## Training
+
+    val trainer = Trainer(
+      numIterations = 3000,
+      miniBatchSize = 100,
+      numParallel = 0, //Try using more of those cores!
+      learningRate = ConstantRate(0.3), //Others to try: AnnealingRate(0.35, iterations = 5000)
+      momentumMultiplier = 0.9, 
+      gradientChecker = None, //To check gradients try: Some(GradientChecker(numChecks = 10, accuracy = 8))
+      evalIterations = 1000)
+
+      trainer.train(network, trainSet)
+
 ## Saving / Loading
 
     NeuralNetwork.save(network,"my-network.obj")

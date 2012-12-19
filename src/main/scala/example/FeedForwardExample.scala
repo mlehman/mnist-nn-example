@@ -17,16 +17,17 @@ object FeedForwardExample {
     val network = NeuralNetwork(
       Layer(trainSet.numInputs, 100, Logistic):+Layer(trainSet.numOutputs, SoftMax),
       objective = CrossEntropyError,
-      weightDecay = 0.0001)
+      weightDecay = 0.0)
 
     println("Initial Classification Accuracy: %f".format(network.eval(trainSet)))
 
     val trainer = Trainer(
-      numIterations = 5000,
+      numIterations = 3000,
       miniBatchSize = 100,
       learningRate = ConstantRate(0.3), //Others to try: AnnealingRate(0.35, iterations = 5000)
       momentumMultiplier = 0.9, 
-      gradientChecker = None //To check gradients try: Some(GradientChecker(numChecks = 10, accuracy = 8))
+      gradientChecker = None, //To check gradients try: Some(GradientChecker(numChecks = 10, accuracy = 8))
+      evalIterations = 1000
       )
       
     trainer.train(network, trainSet)
