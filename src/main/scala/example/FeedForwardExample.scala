@@ -27,8 +27,7 @@ object FeedForwardExample {
       learningRate = ConstantRate(0.3), //Others to try: AnnealingRate(0.35, iterations = 5000)
       momentumMultiplier = 0.9, 
       gradientChecker = None, //To check gradients try: Some(GradientChecker(numChecks = 10, accuracy = 8))
-      evalIterations = 1000
-      )
+      evalIterations = 1000)
       
     trainer.train(network, trainSet)
 
