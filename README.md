@@ -38,7 +38,7 @@ This will run the example in src/main/scala/example/FeedForwardExample.scala
       gradientChecker = None, //To check gradients try: Some(GradientChecker(numChecks = 10, accuracy = 8))
       evalIterations = 1000)
 
-      trainer.train(network, trainSet)
+    trainer.train(network, trainSet)
 
 ## Saving / Loading
 
